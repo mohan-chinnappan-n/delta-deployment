@@ -1,4 +1,5 @@
 # How do prepare for Delta deployment?
+![delta deployment](https://d259t2jj6zp7qm.cloudfront.net/images/20210323154950/OptV2-2000x1000.png)
 
 ## Let us create DX Project 'deltatest' to provide the concepts
 ```
@@ -71,11 +72,7 @@ Initialized empty Git repository in /Users/mchinnappan/deltatest/.git/
 * fe12d89 - Sun, 8 Jan 2023 12:59:54 -0500 (2 minutes ago) (HEAD -> main)
             init - mohan-chinnappan-n
 ```
-
-## Let us create  scratch org (deltatest)
-```
-~/deltatest [main] >sfdx force:org:create -s -f config/project-scratch-def.json -a deltatest         
-``` 
+  
 
 ## Let us create  3 classes HelloPeach HelloPear and HelloPineapple
 ```
@@ -279,4 +276,4 @@ destructiveChanges/
 ```
 
 ## References
-- [Salesforce Blog on Delta deployment](https://developer.salesforce.com/blogs/2021/01/customizing-unpackaged-deployments-using-a-delta-generation-tool)
+- [Salesforce Blog on Delta deployment](https://developer.salesforce.com/blogs/2021/01/optimizing-unpackaged-deployments-using-a-delta-generation-tool)
