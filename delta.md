@@ -109,7 +109,7 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
  create mode 100644 force-app/main/default/classes/HelloPineapple.cls-meta.xml
 ```
 
-## Let us see the git log for these chnages
+## Let us see the git log for these changes
 ```
 ~/deltatest [main] >git lg3                                                                         
 * faa2d86 - Sun, 8 Jan 2023 13:08:07 -0500 (12 seconds ago) (committed: Sun, 8 Jan 2023 13:08:07 -0500)  (HEAD -> main)
@@ -181,7 +181,26 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
 ```
 
 ## Let us run the sgd:source:delta to create package.xml and destructiveChanges.xml
--   Generates the sfdx content in source format and destructive change from two git commits
+
+- Install this plugin using
+```
+sfdx plugins:install sfdx-git-delta
+
+```
+- Check the plugin install
+```
+sfdx plugins
+```
+
+```
+sfdx-git-delta 5.8.0 <------
+sfdx-mohanc-plugins 0.0.222 
+```
+
+
+-  This plugin generates the sfdx content in source format and destructive change from two git commits
+
+- Our 'from' SHA is faa2d86  'to' SHA is 'faa2d86' output dir is current folder
 
 ```
 ~/deltatest [main] >sfdx sgd:source:delta -f faa2d86 -t 474669c -d -o .                  
@@ -193,7 +212,10 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
 }
 ```
 
+![delta](img/delta-1.png)
+
 ### Additions
+- Contains the metadata that has been added and changed and that needs to be deployed to the Org
 ```
 ~/deltatest [main] >cat package/package.xml 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -205,7 +227,14 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
     <version>55.0</version>
 </Package>
 ```
+- Deploy this by
+```
+sfdx force:source:deploy -x package/package.xml  
+
+```
+
 ### Deletions
+- Contains the metadata that has been removed that needs to be deleted from the Org
 ```
 ~/deltatest [main] >cat destructiveChanges/destructiveChanges.xml 
 ```xml
@@ -220,6 +249,22 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
 
 ```
 
+- Perform deletion by
+
+```
+sfdx force:source:deploy -x destructiveChanges 
+
+```
+- Note this package.xml is an empty file required by DX CLI for the deployment of destructive changes 
+```
+tree destructiveChanges/
+destructiveChanges/
+├── destructiveChanges.xml
+└── package.xml
+
+```
+
+
 ## my .gitconfig
 
 ```
@@ -232,3 +277,6 @@ target dir = /Users/mchinnappan/deltatest/force-app/main/default/classes
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 ```
+
+## References
+- [Salesforce Blog on Delta deployment](https://developer.salesforce.com/blogs/2021/01/customizing-unpackaged-deployments-using-a-delta-generation-tool)
