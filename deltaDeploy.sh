@@ -4,15 +4,16 @@
 LN='-----------------------------------'
 SX='====='
 AR='<----'
+LOGLINES=20
 
 echo $LN
 echo "Delta Deployment"
 echo $LN
 echo $SX git log $SX 
 
-git log --pretty='format:%h|%an|%ae|%s' | head -n 10
+git log --pretty='format:%h|%an|%ae|%s' | head -n $LOGLINES
 echo $LN
-echo -n "FROM (Enter SHA1 for this commit FROM which we need to the delta deployment, defulat: HEAD^): "
+echo -n "FROM (Enter SHA1 for this commit FROM which we need to the delta deployment, default: HEAD^): "
 read -r FROM
 FROM=${FROM:-"HEAD^"}
 echo -n "TO (Enter SHA1 for this commit TO which we need to the delta deployment, default: HEAD): "
