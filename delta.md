@@ -8,7 +8,7 @@
 
 ## Demo
 ```
-~/deltatest [main] >bash deploy.sh
+~/deltatest [main] >bash deltaDeploy.sh
 -----------------------------------
 Delta Deployment
 -----------------------------------
