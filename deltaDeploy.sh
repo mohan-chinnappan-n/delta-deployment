@@ -35,6 +35,8 @@ then
   echo "Delta prep was not successful, exiting with error code 2!"
   exit 2
 fi
+
+zipr -r deployment_files.zip package/* destructiveChanges/*
  
 
 
