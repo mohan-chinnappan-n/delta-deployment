@@ -1,6 +1,65 @@
 # How do prepare for Delta deployment?
 ![delta deployment](https://d259t2jj6zp7qm.cloudfront.net/images/20210323154950/OptV2-2000x1000.png)
 
+## Single command to do the delta deployment
+
+- Download the script from here
+- [deltaDeploy](./deltaDeploy.sh)
+
+## Demo
+```
+~/deltatest [main] >bash deploy.sh
+-----------------------------------
+Delta Deployment
+-----------------------------------
+===== git log =====
+29dff0a|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|cleanup
+15ca632|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|delta image added
+3456d9f|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|delta.md updated
+474669c|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|Fruit Mango added
+73ea22c|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|Fruit Mango added
+171a81a|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|pineapple fruit classes removed
+faa2d86|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|3 fruit classes added
+fe12d89|mohan-chinnappan-n|mohan.chinnappan.n@gmail.com|init
+-----------------------------------
+FROM (Enter SHA1 for this commit FROM which we need to the delta deployment, defulat: HEAD^): fe12d89
+TO (Enter SHA1 for this commit TO which we need to the delta deployment, default: HEAD): 29dff0a
+----------------------------------- fe12d89 to 29dff0a -----------------------------------
+----------------------------------- Preparing delta packages -----------------------------------
+{
+  "error": null,
+  "output": ".",
+  "success": true,
+  "warnings": []
+}
+<---- SUCCESS: true
+Check only? (Enter y/n, default: y): y
+<---- Check only: -c 
+Run TestClasses only? (Enter y/n, default: y): n
+<---- testlevel  
+Run deletion pre or post? (Enter pre or post, default: post)): 
+post
+<---- pre/post: post
+----------------------------------- Deploying delta packages -----------------------------------
+sfdx force:source:deploy -x package/package.xml --postdestructivechanges destructiveChanges/destructiveChanges.xml --verbose --loglevel TRACE
+Deploying v55.0 metadata to mohan.chinnappan.n_ea2@gmail.com using the v56.0 SOAP API
+Deploy ID: 0Af3h00000Rz0dNCAR
+DEPLOY PROGRESS | ████████████████████████████████████████ | 3/3 Components
+
+=== Deployed Source
+
+ FULL NAME  TYPE      PROJECT PATH                                           
+ ────────── ───────── ────────────────────────────────────────────────────── 
+ HelloMango ApexClass force-app/main/default/classes/HelloMango.cls          
+ HelloMango ApexClass force-app/main/default/classes/HelloMango.cls-meta.xml 
+ HelloPeach ApexClass force-app/main/default/classes/HelloPeach.cls          
+ HelloPeach ApexClass force-app/main/default/classes/HelloPeach.cls-meta.xml 
+ HelloPear  ApexClass force-app/main/default/classes/HelloPear.cls           
+ HelloPear  ApexClass force-app/main/default/classes/HelloPear.cls-meta.xml  
+Deploy Succeeded.
+
+```
+
 ## Let us create DX Project 'deltatest' to provide the concepts
 ```
 ~  >sfdx force:project:create -n deltatest
@@ -226,8 +285,7 @@ sfdx-mohanc-plugins 0.0.222
 ```
 - Deploy this by
 ```
-sfdx force:source:deploy -x package/package.xml  
-
+sfdx force:source:deploy -x package/package.xml  -c --verbose --testlevel RunLocalTests --loglevel DEBUG
 ```
 
 ### Deletions
@@ -249,7 +307,7 @@ sfdx force:source:deploy -x package/package.xml
 - Perform deletion by
 
 ```
-sfdx force:source:deploy -x destructiveChanges 
+sfdx force:mdapi:deploy -d destructiveChanges
 
 ```
 - Note this package.xml is an empty file required by DX CLI for the deployment of destructive changes 
