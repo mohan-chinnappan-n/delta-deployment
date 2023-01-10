@@ -4,13 +4,15 @@
 LN='-----------------------------------'
 SX='====='
 AR='<----'
-LOGLINES=20
+LOGLINES=${1:-24}
+
 
 echo $LN
 echo "Delta Deployment"
 echo $LN
 echo $SX git log $SX 
 
+echo "git log --pretty='format:%h|%an|%ae|%s' | head -n $LOGLINES"
 git log --pretty='format:%h|%an|%ae|%s' | head -n $LOGLINES
 echo $LN
 echo $LN
