@@ -8,7 +8,11 @@ LOGLINES=${1:-24}
 
 
 echo $LN
-echo "Delta Deployment"
+echo "DELTA DEPLOYMENT"
+echo "If required peform  'git reset --hard' to reset the current branch tip,"
+echo  "and also delete any changes in the working directory and staging area"
+echo $LN
+echo "Make sure you have done git pull from the required branch"
 echo $LN
 echo $SX git log $SX 
 
