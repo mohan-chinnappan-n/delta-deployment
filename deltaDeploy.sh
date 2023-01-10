@@ -26,7 +26,7 @@ SUCCESS=`sfdx mohanc:data:jq -f '.success' -i _delta_.json`
 echo "${AR} SUCCESS: $SUCCESS"
 #-------------------
 
-#-------------------
+#-------------------TODO: Can be make as a function
 echo -n "Check only? (Enter y/n, default: y): "
 read -r CO
 CO=${CO:-"y"}
