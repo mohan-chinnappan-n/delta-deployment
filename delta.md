@@ -10,7 +10,7 @@
 <a name='deploy'></a>
 ## Single command to do the delta deployment
 
-- Download the script from here
+- Download the script from [here](./deltaDeploy.sh)
 - [deltaDeploy](./deltaDeploy.sh)
 
 ## Demo
