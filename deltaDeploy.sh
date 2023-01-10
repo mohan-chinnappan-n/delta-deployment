@@ -10,10 +10,13 @@ LOGLINES=${1:-24}
 echo $LN
 echo "DELTA DEPLOYMENT"
 echo $LN
-echo "If required, peform  'git reset --hard' - This resets the current branch tip,"
+echo "Make sure to perform these steps before running this script: "
+echo "1. Checkout the branch 'git checkout <branchName>' "
+echo $LN
+echo "2. If required, peform  'git reset --hard' - This resets the current branch tip,"
 echo  "and also deletes any changes in the working directory and staging area"
 echo $LN
-echo "Make sure you have done git pull from the required branch"
+echo "3. You have done 'git pull' from the required branch"
 echo $LN
 echo $SX git log $SX 
 
