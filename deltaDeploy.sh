@@ -10,7 +10,7 @@ echo "Delta Deployment"
 echo $LN
 echo $SX git log $SX 
 
-git log --pretty='format:%h|%an|%ae|%s'
+git log --pretty='format:%h|%an|%ae|%s' | head -n 10
 echo $LN
 echo -n "FROM (Enter SHA1 for this commit FROM which we need to the delta deployment, defulat: HEAD^): "
 read -r FROM
