@@ -13,6 +13,7 @@ echo $SX git log $SX
 
 git log --pretty='format:%h|%an|%ae|%s' | head -n $LOGLINES
 echo $LN
+echo $LN
 echo -n "FROM (Enter SHA1 for this commit FROM which we need to the delta deployment, default: HEAD^): "
 read -r FROM
 FROM=${FROM:-"HEAD^"}
