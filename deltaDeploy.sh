@@ -36,6 +36,7 @@ then
   exit 2
 fi
 
+#---- zip the delta files
 zip -r deployment_files.zip package/* destructiveChanges/*
  
 
@@ -48,13 +49,6 @@ then
   RT=' --testlevel RunLocalTests  '
 else
   RT=' ' 
-fi
-
-if [ "$CO" = "y" ] 
-then
-  CO='-c '
-else
-  CO=' ' 
 fi
 echo "${AR} testlevel $RT"
 
@@ -69,13 +63,14 @@ then
 else
   PREPOST='post' 
 fi
-
-echo $PREPOST
 echo "${AR} pre/post: $PREPOST"
 #-------------------
 
 echo $LN Deploying delta packages $LN
 echo sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
-#sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
 
+#------ open the org ---
+#sfdx force:org:open  -p   lightning/setup/DeployStatus/home
+
+#sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
 # echo sfdx force:mdapi:deploy -d destructiveChanges      -c --verbose --testlevel RunLocalTests --loglevel DEBUG --wait -1 
