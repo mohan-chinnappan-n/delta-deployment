@@ -1,6 +1,13 @@
 # How do prepare for Delta deployment?
 ![delta deployment](https://d259t2jj6zp7qm.cloudfront.net/images/20210323154950/OptV2-2000x1000.png)
 
+## Topics
+- [Single Command to Delta Deployment](#deploy)
+- [Detailed Steps](#full)
+----
+
+
+<a name='deploy'></a>
 ## Single command to do the delta deployment
 
 - Download the script from here
@@ -59,7 +66,10 @@ DEPLOY PROGRESS | ████████████████████�
 Deploy Succeeded.
 
 ```
+----
+<a name='full'></a>
 
+## Full steps
 ## Let us create DX Project 'deltatest' to provide the concepts
 ```
 ~  >sfdx force:project:create -n deltatest
