@@ -36,7 +36,7 @@ then
   exit 2
 fi
 
-zipr -r deployment_files.zip package/* destructiveChanges/*
+zip -r deployment_files.zip package/* destructiveChanges/*
  
 
 
@@ -76,6 +76,6 @@ echo "${AR} pre/post: $PREPOST"
 
 echo $LN Deploying delta packages $LN
 echo sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
-sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
+#sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
 
 # echo sfdx force:mdapi:deploy -d destructiveChanges      -c --verbose --testlevel RunLocalTests --loglevel DEBUG --wait -1 
