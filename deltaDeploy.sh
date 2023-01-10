@@ -28,19 +28,12 @@ SUCCESS=`sfdx mohanc:data:jq -f '.success' -i _delta_.json`
 echo "${AR} SUCCESS: $SUCCESS"
 #-------------------
 
-#-------------------TODO: Can be make as a function
-echo -n "Check only? (Enter y/n, default: y): "
-read -r CO
-CO=${CO:-"y"}
-
-if [ "$CO" = "y" ] 
+if [ "$SUCCESS" = "false"   ]
 then
-  CO='-c '
-else
-  CO=' ' 
+  echo "Delta prep was not successful, exiting with error code 2!"
+  exit 2
 fi
-echo "${AR} Check only: $CO"
-#-------------------
+ 
 
 
 echo -n "Run TestClasses only? (Enter y/n, default: y): "
@@ -52,6 +45,7 @@ then
 else
   RT=' ' 
 fi
+
 if [ "$CO" = "y" ] 
 then
   CO='-c '
@@ -61,7 +55,7 @@ fi
 echo "${AR} testlevel $RT"
 
 #-------------------
-echo -n "Run deletion pre or post? (Enter pre or post, default: post)): "
+echo -n "Run deletion pre or post? (Enter pre or post, default: post): "
 read -r PREPOST
 PREPOST=${PREPOST:-"post"}
 
@@ -77,6 +71,6 @@ echo "${AR} pre/post: $PREPOST"
 #-------------------
 
 echo $LN Deploying delta packages $LN
-echo sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  $CO --verbose --loglevel TRACE 
-sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  $CO --verbose --loglevel TRACE 
+echo sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
+# sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  $CO --verbose --loglevel TRACE 
 # echo sfdx force:mdapi:deploy -d destructiveChanges      -c --verbose --testlevel RunLocalTests --loglevel DEBUG --wait -1 
