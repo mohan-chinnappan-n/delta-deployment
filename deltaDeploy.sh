@@ -78,6 +78,7 @@ echo "${AR} pre/post: $PREPOST"
 
 echo $LN Deploying delta packages $LN
 echo sfdx force:source:deploy -x package/package.xml  --${PREPOST}destructivechanges destructiveChanges/destructiveChanges.xml $RT  -c --verbose --loglevel TRACE 
+sfdx force:org:open   -p   lightning/setup/DeployStatus/home
 
 #------ open the org ---
 #sfdx force:org:open  -p   lightning/setup/DeployStatus/home
