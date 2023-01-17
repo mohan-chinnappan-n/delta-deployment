@@ -6,12 +6,13 @@
 - [Detailed Steps](#full)
 ----
 
-
 <a name='deploy'></a>
 ## Single command to do the delta deployment
 
 - Download the script from [here](./deltaDeploy.sh)
 - [deltaDeploy](./deltaDeploy.sh)
+
+
 
 ## Demo
 ```
@@ -70,6 +71,8 @@ Deploy Succeeded.
 <a name='full'></a>
 
 ## Full steps
+- ![steps](img/delta-concepts.png)
+
 ## Let us create DX Project 'deltatest' to provide the concepts
 ```
 ~  >sfdx force:project:create -n deltatest
