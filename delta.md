@@ -1,8 +1,8 @@
 # Delta deployment vs Full Deployment
 
 ## Assumptions
-- Version control should be single-source of truth of source code
-- Version control should be up-to-date any point in time
+- Version control should bei the single-source of truth of source code
+- Version control should be kept up-to-date at any point in time
 -----
 
 ## Delta vs full deployment
