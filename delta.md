@@ -15,7 +15,7 @@
 | Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments - Logs as shown below|
 
 ## Delta Deployment Logs - example
-|Deployment Date|Approval Ref#|Environment|From Commit-Id SHA1|To Commit-Id SHA1|Comments|
+|Deployment Date|Approval Ref#|Environment|From Commit-Id SHA-1|To Commit-Id SHA-1|Comments|
 | ----------- | ----------- | ----------- | ----------- |----------- | ----------- |
 | Dec-10-2022 | #123456 | UAT |  839861d | 0d306cc | 12 components |
 
