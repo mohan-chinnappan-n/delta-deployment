@@ -12,7 +12,7 @@
 | Adheres to the principles of container based deployments | You only deploy the delta - not deploying untouched code|
 | Takes more deployment time |  Quicker Deployments |
 | Simple toolset| Requires smarter toolset|
-| Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments|
+| Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments - Logs as shown below|
 
 ## Delta Deployment Logs - example
 |Deployment Date|Approval Ref#|Environment|From Commit-Id SHA1|To Commit-Id SHA1|Comments|
