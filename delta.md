@@ -1,5 +1,30 @@
-# How do prepare for Delta deployment?
+# Delta deployment vs Full Deployment
+
+## Assumptions
+- Version control should be single-source of truth of source code
+- Version control should be up-to-date any point in time
+-----
+
+## Delta vs full deployment
+
+| Full Deployment      | Delta |
+| ----------- | ----------- |
+| Adheres to the principles of container based deployments | You only deploy the delta - not deploying untouched code|
+| Takes more deployment time |  Quicker Deployments |
+| Simple toolset| Requires smarter toolset|
+| Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployment|
+
+### Recommendation
+- Each approach has a place in your deployment process. Start with a couple of full deployments and follow it with delta deployment
+
+-----
+
+- Refer : [Salesforce Blog on Delta deployment](https://developer.salesforce.com/blogs/2021/01/optimizing-unpackaged-deployments-using-a-delta-generation-tool)
+
+
+## How do prepare for Delta deployment?
 ![delta deployment](https://d259t2jj6zp7qm.cloudfront.net/images/20210323154950/OptV2-2000x1000.png)
+
 
 ## Topics
 - [Single Command to Delta Deployment](#deploy)
