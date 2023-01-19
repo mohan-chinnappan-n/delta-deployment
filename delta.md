@@ -1,9 +1,24 @@
 # Delta deployment vs Full Deployment
 
+## Topics
+
+- [Assumptions](#assumptions)
+- [Comparing - Delta vs full deployment ](#compare)
+- [Delta deployment logs](#logs)
+- [Recommendation](#recommendation)
+- [Single Command to Delta Deployment](#deploy)
+- [Detailed Steps](#full)
+- [References and more tools](#refs)
+
+
+----
+<a name='assumptions'></a>
 ## Assumptions
 - Version control should be the single-source of truth for the source code
 - Version control should be kept up-to-date at any point in time
 -----
+
+<a name='compare'></a>
 
 ## Delta vs full deployment
 
@@ -14,13 +29,14 @@
 | Simple toolset| Requires smarter toolset|
 | Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments - Logs as shown below|
 
+<a name='logs'></a>
 ## Delta Deployment Logs - example
 |Deployment Date|Approval Ref#|Environment|From Commit-Id SHA-1|To Commit-Id SHA-1|Comments|
 | ----------- | ----------- | ----------- | ----------- |----------- | ----------- |
 | Dec-10-2022 | #123456 | UAT |  839861d | 0d306cc | 12 components |
 
 
-
+<a name='recommendation'></a>
 ### Recommendation
 - Each approach has a place in your deployment process. Start with a couple of full deployments and follow it with delta deployment
 
@@ -33,10 +49,7 @@
 ![delta deployment](https://d259t2jj6zp7qm.cloudfront.net/images/20210323154950/OptV2-2000x1000.png)
 
 
-## Topics
-- [Single Command to Delta Deployment](#deploy)
-- [Detailed Steps](#full)
-----
+ 
 
 <a name='deploy'></a>
 ## Single command to do the delta deployment
@@ -378,6 +391,7 @@ destructiveChanges/
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 ```
 
+<a name='refs'></a>
 ## References
 
 ### Delta deployment
