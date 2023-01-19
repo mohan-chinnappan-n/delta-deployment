@@ -12,7 +12,7 @@
 | Adheres to the principles of container based deployments | You only deploy the delta - not deploying untouched code|
 | Takes more deployment time |  Quicker Deployments |
 | Simple toolset| Requires smarter toolset|
-| Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployment|
+| Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments|
 
 ### Recommendation
 - Each approach has a place in your deployment process. Start with a couple of full deployments and follow it with delta deployment
