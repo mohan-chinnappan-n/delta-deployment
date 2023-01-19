@@ -379,4 +379,10 @@ destructiveChanges/
 ```
 
 ## References
+
+### Delta deployment
 - [Salesforce Blog on Delta deployment](https://developer.salesforce.com/blogs/2021/01/optimizing-unpackaged-deployments-using-a-delta-generation-tool)
+### Org compare tool
+- [![Org Compare CLI and UI](https://img.youtube.com/vi/3eLkVv9djCg/default.jpg)](https://youtu.be/3eLkVv9djCg)
+
+
