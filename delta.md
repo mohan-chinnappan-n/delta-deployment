@@ -1,4 +1,4 @@
-# Delta deployment vs Full Deployment
+# Delta Deployment vs Full Deployment
 
 ## Topics
 
