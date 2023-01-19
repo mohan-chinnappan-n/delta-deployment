@@ -14,6 +14,13 @@
 | Simple toolset| Requires smarter toolset|
 | Simple to keep track of deployments|Requires good documentation including commit-ids used for the deployments|
 
+## Delta Deployment Logs - example
+|Deployment Date|Approval Ref#|Environment|From Commit-Id SHA1|To Commit-Id SHA1|Comments|
+| ----------- | ----------- | ----------- | ----------- |----------- | ----------- |
+| Dec-10-2022 | #123456 | UAT |  839861d | 0d306cc | 12 components |
+
+
+
 ### Recommendation
 - Each approach has a place in your deployment process. Start with a couple of full deployments and follow it with delta deployment
 
